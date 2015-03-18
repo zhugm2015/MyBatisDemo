@@ -1,10 +1,12 @@
 package demo.test;
 
-import demo.mapper.UserMapper;
+import demo.data.UserMapper;
 import demo.model.User;
 import demo.util.SessionFactoryUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+
+import javax.websocket.Session;
 
 /**
  * @author mingfei.net@Gmail.com
@@ -12,10 +14,12 @@ import org.apache.ibatis.session.SqlSessionFactory;
  */
 public class SelectTest {
 
+    private static SqlSessionFactory sqlSessionFactory;
     private static SqlSession sqlSession;
 
     static {
-        SqlSessionFactory sqlSessionFactory = SessionFactoryUtil.getSqlSessionFactory();
+//        sqlSessionFactory = SessionFactoryUtil.getSqlSessionFactory();
+        sqlSessionFactory = SessionFactoryUtil.getSqlSessionFactoryViaXML();
         sqlSession =  sqlSessionFactory.openSession();
     }
 
@@ -29,8 +33,9 @@ public class SelectTest {
     }
 
     private static User selectOne() {
-        return sqlSession.selectOne("demo.mapper.UserMapper.getUserById", 1);
+        return sqlSession.selectOne("demo.data.UserMapper.getUserById", 1);
     }
+
     public static void main(String[] args) {
         try {
             System.out.println("selectById: " + selectById());

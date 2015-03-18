@@ -1,4 +1,4 @@
-package demo.mapper;
+package demo.data;
 
 import org.apache.ibatis.annotations.Select;
 import demo.model.User;
