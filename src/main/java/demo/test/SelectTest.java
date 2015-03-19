@@ -17,7 +17,7 @@ public class SelectTest {
     private static SqlSessionFactory sqlSessionFactory;
     private static SqlSession sqlSession;
 
-    private static final int ID = 4;
+    private static final int ID = 17;
 
     static {
 //        sqlSessionFactory = SessionFactoryUtil.getSqlSessionFactory();
@@ -43,7 +43,7 @@ public class SelectTest {
      * @return
      */
     private static User selectOne() {
-        return sqlSession.selectOne("demo.data.UserMapper.getUserById", ID);
+        return sqlSession.selectOne("user.select", ID);
     }
 
     /**
@@ -51,12 +51,12 @@ public class SelectTest {
      * @return
      */
     private static User selectUserViaXML() {
-        return sqlSession.selectOne("demo.data.UserMapper.selectUserViaXML", ID);
+        return sqlSession.selectOne("user.select", ID);
     }
 
     public static void main(String[] args) {
         try {
-            System.out.println("selectById: " + selectById());
+//            System.out.println("selectById: " + selectById());//todo
             System.out.println("selectOne: " + selectOne());
             System.out.println("selectUserViaXML: " + selectUserViaXML());
         } finally {

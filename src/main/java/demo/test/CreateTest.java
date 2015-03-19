@@ -25,7 +25,7 @@ public class CreateTest {
      * @param args
      */
     private static int insertUserViaXML() {
-        return sqlSession.insert("demo.data.UserMapper.insertUserViaXML", new User("测试", "testPassword"));
+        return sqlSession.insert("user.insert", new User("测试1", "testPassword1"));
     }
 
     /**
@@ -42,7 +42,7 @@ public class CreateTest {
     public static void main(String[] args) {
         try {
             System.out.println("insertUserViaXML :" + insertUserViaXML());
-            System.out.println("insertUser: " + insertUser());
+//            System.out.println("insertUser: " + insertUser());//todo
         } finally {
             sqlSession.commit();
             sqlSession.close();
